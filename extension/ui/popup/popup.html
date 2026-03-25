@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bleep Bloop</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header class="header">
+        <h1>Bleep Bloop</h1>
+        <label class="toggle">
+          <span>Enabled</span>
+          <input id="enabledToggle" type="checkbox">
+        </label>
+      </header>
+
+      <section class="card">
+        <p id="statusText" class="status">Loading status...</p>
+        <dl class="stats">
+          <div>
+            <dt>Transcript</dt>
+            <dd id="transcriptState">-</dd>
+          </div>
+          <div>
+            <dt>Cues</dt>
+            <dd id="cueCount">-</dd>
+          </div>
+          <div>
+            <dt>Flagged</dt>
+            <dd id="flaggedCount">-</dd>
+          </div>
+        </dl>
+        <p id="muteReason" class="reason"></p>
+      </section>
+
+      <section class="card flagged-panel">
+        <div class="section-header">
+          <h2>Detected Instances</h2>
+          <span id="flaggedWordsSummary" class="section-summary">0</span>
+        </div>
+        <p id="flaggedWordsEmpty" class="empty-state">Open or scan a transcript to list matched words.</p>
+        <ul id="flaggedWordsList" class="flagged-words-list" hidden></ul>
+      </section>
+
+      <section class="actions">
+        <button id="openTranscriptButton" type="button">Open Transcript</button>
+        <button id="rescanButton" type="button">Rescan Transcript</button>
+        <button id="optionsButton" type="button">Options</button>
+      </section>
+    </main>
+
+    <script src="../../shared/index.js"></script>
+    <script src="../../shared/constants.js"></script>
+    <script src="../../shared/settings.js"></script>
+    <script src="../../shared/formatting.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bleep Bloop Options</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1>Bleep Bloop</h1>
+        <p>Configure transcript automation, fallback behavior, and the term list.</p>
+      </header>
+
+      <form id="settingsForm" class="grid">
+        <section class="panel">
+          <h2>Behavior</h2>
+          <label><input name="enabled" type="checkbox"> Enable muting</label>
+          <label><input name="autoOpenTranscript" type="checkbox"> Auto-open transcript when possible</label>
+          <label><input name="enableLiveCaptionsFallback" type="checkbox"> Use live captions as fallback</label>
+          <label><input name="enablePlaceholderDetection" type="checkbox"> Detect redacted profanities like `f*ck` and `sh-t`</label>
+          <label><input name="muteNamedPlaceholderCues" type="checkbox"> Mute named placeholder cues like `[bleep]` and `[beep]`</label>
+          <label><input name="muteSymbolPlaceholderCues" type="checkbox"> Mute symbol placeholder cues like `[ __ ]` and `[***]`</label>
+          <label><input name="censorPopupWords" type="checkbox"> Censor matched words in the popup list</label>
+          <label><input name="debug" type="checkbox"> Enable console debug logs</label>
+        </section>
+
+        <section class="panel">
+          <h2>Timing</h2>
+          <label>
+            Mute lead-in (ms)
+            <input name="padBeforeMs" type="number" min="0" max="2000">
+          </label>
+          <label>
+            Mute tail (ms)
+            <input name="padAfterMs" type="number" min="0" max="3000">
+          </label>
+          <label>
+            Last line fallback (ms)
+            <input name="lastCueFallbackMs" type="number" min="500" max="12000">
+          </label>
+        </section>
+
+        <section class="panel panel-wide">
+          <h2>Terms</h2>
+          <p>One term or phrase per line. This list supplements line-level muting. Remove mild words if the default list is too aggressive.</p>
+          <textarea id="terms" name="terms" rows="18"></textarea>
+        </section>
+
+        <footer class="footer">
+          <button id="saveButton" type="submit">Save</button>
+          <button id="resetButton" type="button">Reset Defaults</button>
+          <span id="message" class="message"></span>
+        </footer>
+      </form>
+    </main>
+
+    <script src="../../shared/index.js"></script>
+    <script src="../../shared/constants.js"></script>
+    <script src="../../shared/settings.js"></script>
+    <script src="../../shared/formatting.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

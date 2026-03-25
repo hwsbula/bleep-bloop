@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Bleep Bloop",
+  "description": "Mutes profane YouTube transcript lines without external APIs.",
+  "version": "0.1.0",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Bleep Bloop",
+    "default_popup": "ui/popup/popup.html"
+  },
+  "options_page": "ui/options/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "shared/index.js",
+        "shared/constants.js",
+        "shared/settings.js",
+        "shared/detector.js",
+        "shared/formatting.js",
+        "content/state.js",
+        "content/ignored-instances.js",
+        "content/muting.js",
+        "content/dom.js",
+        "content/transcript.js",
+        "content/captions.js",
+        "content/index.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
